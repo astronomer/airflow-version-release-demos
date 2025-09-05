@@ -1,6 +1,6 @@
 # Airflow version release demos  
 
-This repository contains demos showcasing features of different Airflow versions. 
+This repository contains demos showcasing features of different Airflow versions made with ❤️ by the Astronomer DevRel team. 
 Each branch contains the demo for a different Airflow minor version. 
 
 ## Airflow 3.x
