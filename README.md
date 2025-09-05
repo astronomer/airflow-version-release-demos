@@ -1,0 +1,26 @@
+# Airflow version release demos  
+
+This repository contains demos showcasing features of different Airflow versions. 
+Each branch contains the demo for a different Airflow minor version. 
+
+## Airflow 3.x
+
+- [3.1](https://github.com/astronomer/airflow-version-release-demos/tree/v3.1)
+- [3.0](https://github.com/astronomer/airflow-version-release-demos/tree/v3.0) - Webinar: [Introducing Apache Airflow® 3.0](https://www.astronomer.io/events/webinars/introducing-apache-airflow-3-0-video?utm_source=github)
+
+Since 3.0 was a major release there were 4 additional feature deep-dive webinars:
+
+- [Optimizing your Airflow Developer Experience: Exploring DAG Versioning and Backfills](https://www.astronomer.io/events/webinars/apache-airflow-3-optimize-your-pipeline-developer-experience-video?utm_source=github)
+- [New in Airflow 3.0: Data Assets and Event-Driven Scheduling Deep Dive](https://www.astronomer.io/events/webinars/apache-airflow-3-assets-and-event-driven-scheduling-video?utm_source=github)
+- [Best practices for Upgrading to Airflow 3](https://www.astronomer.io/events/webinars/best-practices-for-upgrading-to-airflow-3-video?utm_source=github)
+- [Airflow 3.0 Security Enhancements: Remote Execution and Task Isolation Deep Dive](https://www.astronomer.io/events/webinars/apache-airflow-3-stronger-security-and-remote-execution-video?utm_source=github)
+
+## Airflow 2.x
+
+- [2.10](https://github.com/astronomer/airflow-version-release-demos/tree/v2.10) - [What's new in Airflow 2.10](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-10-video?utm_source=github)
+- [2.9](https://github.com/astronomer/airflow-version-release-demos/tree/v2.9) - [What's new in Airflow 2.9](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-9-video?utm_source=github)
+- [2.8](https://github.com/astronomer/airflow-version-release-demos/tree/v2.8) - [What's new in Airflow 2.8](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-8-video?utm_source=github)
+- [2.7](https://github.com/astronomer/airflow-version-release-demos/tree/v2.7) - [What's new in Airflow 2.7](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-7-video?utm_source=github)
+- [2.6](https://github.com/astronomer/airflow-version-release-demos/tree/v2.6) - [What's new in Airflow 2.6](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-6-video?utm_source=github)
+- [2.5](https://github.com/astronomer/airflow-version-release-demos/tree/v2.5) - [What's new in Airflow 2.5](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-5-video?utm_source=github)
+- [2.4](https://github.com/astronomer/airflow-version-release-demos/tree/v2.4) - [What's new in Airflow 2.4](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-4-video?utm_source=github)
