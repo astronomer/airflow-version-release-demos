@@ -1,0 +1,12 @@
+# These categories will be applied to all DAGs in the repo.
+categories:
+  - Airflow Fundamentals
+# List of DAGs that should be published to the Astronomer Registry.
+dags:
+  - path: dags/toy_dags/task_group_mapping_toy.py
+  - path: dags/toy_dags/downstream_datasets_taskflow_toy.py
+  - path: dags/toy_dags/upstream_datasets_taskflow_toy.py
+  - path: dags/downstream_datasets_taskflow_usecase.py
+  - path: dags/sensor_decorator.py
+  - path: dags/task_group_mapping_usecase.py
+  - path: dags/upstream_datasets_taskflow_usecase.py
