@@ -1,26 +1,58 @@
-# Airflow version release demos  
+Overview
+========
 
-This repository contains demos showcasing features of different Airflow versions made with ❤️ by the Astronomer DevRel team. 
-Each branch contains the demo for a different Airflow minor version. 
+Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
 
-## Airflow 3.x
 
-- Demo: [3.1](https://github.com/astronomer/airflow-version-release-demos/tree/v3.1)
-- Demo: [3.0](https://github.com/astronomer/airflow-version-release-demos/tree/v3.0) - Webinar: [Introducing Apache Airflow® 3.0](https://www.astronomer.io/events/webinars/introducing-apache-airflow-3-0-video?utm_source=github)
+Prerequisites
+==============
 
-Since 3.0 was a major release there were 4 additional feature deep-dive webinars:
+In order to use the Astro Python SDK examples included in this repo, you must add the following environment variables to your `.env` file.
 
-- [Optimizing your Airflow Developer Experience: Exploring DAG Versioning and Backfills](https://www.astronomer.io/events/webinars/apache-airflow-3-optimize-your-pipeline-developer-experience-video?utm_source=github)
-- [New in Airflow 3.0: Data Assets and Event-Driven Scheduling Deep Dive](https://www.astronomer.io/events/webinars/apache-airflow-3-assets-and-event-driven-scheduling-video?utm_source=github)
-- [Best practices for Upgrading to Airflow 3](https://www.astronomer.io/events/webinars/best-practices-for-upgrading-to-airflow-3-video?utm_source=github)
-- [Airflow 3.0 Security Enhancements: Remote Execution and Task Isolation Deep Dive](https://www.astronomer.io/events/webinars/apache-airflow-3-stronger-security-and-remote-execution-video?utm_source=github)
+```bash
+AIRFLOW__CORE__ENABLE_XCOM_PICKLING=True
+AIRFLOW__ASTRO_SDK__SQL_SCHEMA=<your-schema>
+AIRFLOW__ASTRO_SDK__DATAFRAME_ALLOW_UNSAFE_STORAGE=True
+```
 
-## Airflow 2.x
+Project Contents
+================
 
-- Demo: [2.10](https://github.com/astronomer/airflow-version-release-demos/tree/v2.10) - Webinar: [What's new in Airflow 2.10](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-10-video?utm_source=github)
-- Demo: [2.9](https://github.com/astronomer/airflow-version-release-demos/tree/v2.9) - Webinar: [What's new in Airflow 2.9](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-9-video?utm_source=github)
-- Demo: [2.8](https://github.com/astronomer/airflow-version-release-demos/tree/v2.8) - Webinar: [What's new in Airflow 2.8](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-8-video?utm_source=github)
-- Demo: [2.7](https://github.com/astronomer/airflow-version-release-demos/tree/v2.7) - Webinar: [What's new in Airflow 2.7](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-7-video?utm_source=github)
-- Demo: [2.6](https://github.com/astronomer/airflow-version-release-demos/tree/v2.6) - Webinar: [What's new in Airflow 2.6](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-6-video?utm_source=github)
-- Demo: [2.5](https://github.com/astronomer/airflow-version-release-demos/tree/v2.5) - Webinar: [What's new in Airflow 2.5](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-5-video?utm_source=github)
-- Demo: [2.4](https://github.com/astronomer/airflow-version-release-demos/tree/v2.4) - Webinar: [What's new in Airflow 2.4](https://www.astronomer.io/events/webinars/whats-new-in-airflow-2-4-video?utm_source=github)
+Your Astro project contains the following files and folders:
+
+- dags: This folder contains the Python files for your Airflow DAGs. By default, this directory includes an example DAG that runs every 30 minutes and simply prints the current date. It also includes an empty 'my_custom_function' that you can fill out to execute Python code.
+- Dockerfile: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
+- include: This folder contains any additional files that you want to include as part of your project. It is empty by default.
+- packages.txt: Install OS-level packages needed for your project by adding them to this file. It is empty by default.
+- requirements.txt: Install Python packages needed for your project by adding them to this file. It is empty by default.
+- plugins: Add custom or community plugins for your project to this file. It is empty by default.
+- airflow_settings.yaml: Use this local-only file to specify Airflow Connections, Variables, and Pools instead of entering them in the Airflow UI as you develop DAGs in this project.
+
+Deploy Your Project Locally
+===========================
+
+1. Start Airflow on your local machine by running 'astro dev start'.
+
+This command will spin up 3 Docker containers on your machine, each for a different Airflow component:
+
+- Postgres: Airflow's Metadata Database
+- Webserver: The Airflow component responsible for rendering the Airflow UI
+- Scheduler: The Airflow component responsible for monitoring and triggering tasks
+
+2. Verify that all 3 Docker containers were created by running 'docker ps'.
+
+Note: Running 'astro dev start' will start your project with the Airflow Webserver exposed at port 8080 and Postgres exposed at port 5432. If you already have either of those ports allocated, you can either stop your existing Docker containers or change the port.
+
+3. Access the Airflow UI for your local Airflow project. To do so, go to http://localhost:8080/ and log in with 'admin' for both your Username and Password.
+
+You should also be able to access your Postgres Database at 'localhost:5432/postgres'.
+
+Deploy Your Project to Astronomer
+=================================
+
+If you have an Astronomer account, pushing code to a Deployment on Astronomer is simple. For deploying instructions, refer to Astronomer documentation: https://docs.astronomer.io/cloud/deploy-code/
+
+Contact
+=======
+
+The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support team: https://support.astronomer.io/
