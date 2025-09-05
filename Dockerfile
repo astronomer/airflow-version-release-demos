@@ -1,1 +1,1 @@
-FROM air.astronomer.io/runtime:3.0-6
+FROM air.astronomer.io/runtime:3.0-10
