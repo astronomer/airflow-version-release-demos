@@ -1,2 +1,5 @@
+.git
 .env
-airflow_settings.yaml
+.DS_Store # macOS specific ignore
+__pycache__/
+astro
