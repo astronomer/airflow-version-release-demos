@@ -1,11 +1,10 @@
 """
-External View Plugin - Navigation
+External View Plugin - Task
 
-This plugin adds a link to the navigation menu under Browse -> Plugin Example - External View. 
-It opens a separate page.
+This plugin adds a link to individual task pages. 
+It opens a separate page with task specific information.
 """
 
-import os
 from pathlib import Path
 from airflow.plugins_manager import AirflowPlugin
 from fastapi import FastAPI
@@ -15,7 +14,7 @@ PLUGIN_DIR = Path(__file__).parent
 TEMPLATES_DIR = PLUGIN_DIR / "templates"
 STATIC_DIR = PLUGIN_DIR / "static"
 
-app = FastAPI(title="Nav Hello World", version="1.0.0")
+app = FastAPI(title="Task Hello World", version="1.0.0")
 
 
 def load_template(template_name: str) -> str:
@@ -26,10 +25,13 @@ def load_template(template_name: str) -> str:
     return "<html><body><h1>Template not found</h1></body></html>"
 
 
-@app.get("/hello")
-async def hello_world():
-    """Modular Hello World page using separate HTML template"""
+@app.get("/hello/{dag_id}/{task_id}")
+async def hello_task(dag_id: str, task_id: str):
+    """Task specific Hello World page using separate HTML template"""
     html_content = load_template("hello.html")
+    # Replace template variables
+    html_content = html_content.replace("{{DAG_ID}}", dag_id)
+    html_content = html_content.replace("{{TASK_ID}}", task_id)
     return HTMLResponse(content=html_content)
 
 
@@ -54,20 +56,18 @@ async def serve_static_files(file_name: str):
     return HTMLResponse(content="File not found", status_code=404)
 
 
-class NavigationExternalViewPlugin(AirflowPlugin):
-    name = "nav_hello_world"
+class TaskExternalViewPlugin(AirflowPlugin):
+    name = "task_hello_world"
     
     fastapi_apps = [{
         "app": app,
-        "url_prefix": "/ev-nav-plugin",
-        "name": "External View - Navigation"
+        "url_prefix": "/ev-task-plugin",
+        "name": "External View - Task"
     }]
-    
 
     external_views = [{
-        "name": "Plugin Example - External View",
-        "href": "/ev-nav-plugin/hello",
-        "destination": "nav",     
-        "category": "browse",
-        "url_route": "nav_plugin"  # Makes it appear in UI
+        "name": "Plugin Example - Task",
+        "href": "/ev-task-plugin/hello/{{DAG_ID}}/{{TASK_ID}}",
+        "destination": "task",     # This puts it on individual task pages
+        "url_route": "task_plugin"  # Makes it appear in UI
     }]

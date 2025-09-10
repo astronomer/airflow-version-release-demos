@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FastAPI App - Hello World</title>
+    <link rel="stylesheet" type="text/css" href="/fastapi-app/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hello from FastAPI App! 🚀</h1>
+        <p>This is a <strong>standalone FastAPI application</strong> running within Airflow 3. Unlike external views, this app is accessed directly via its URL prefix.</p>
+        
+        <div class="api-info">
+            <h3>🔗 API Endpoints</h3>
+            <div class="endpoint-list">
+                <div class="endpoint-item">
+                    <span class="method get">GET</span>
+                    <span class="url">/fastapi-app/</span>
+                    <span class="desc">Root API information</span>
+                </div>
+                <div class="endpoint-item">
+                    <span class="method get">GET</span>
+                    <span class="url">/fastapi-app/info</span>
+                    <span class="desc">Plugin details</span>
+                </div>
+                <div class="endpoint-item">
+                    <span class="method post">POST</span>
+                    <span class="url">/fastapi-app/api/message</span>
+                    <span class="desc">Send messages</span>
+                </div>
+                <div class="endpoint-item">
+                    <span class="method get">GET</span>
+                    <span class="url">/fastapi-app/docs</span>
+                    <span class="desc">Auto-generated API docs</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🧪 Test the API</h3>
+            <button class="btn" id="testApiButton">
+                🔥 Test API Call!
+            </button>
+            <div id="apiResult" class="api-result"></div>
+        </div>
+        
+        <div class="docs-link">
+            <a href="/fastapi-app/docs" target="_blank" class="docs-btn">
+                📚 View API Documentation
+            </a>
+        </div>
+    </div>
+
+    <script src="/fastapi-app/static/script.js"></script>
+</body>
+
+</html>

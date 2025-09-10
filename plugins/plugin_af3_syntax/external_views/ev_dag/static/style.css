@@ -1,0 +1,255 @@
+/* External View DAG Plugin - Professional Design (Emerald Theme) */
+
+/* CSS Custom Properties for Brand Colors */
+:root {
+    --moonshot-900: #101935;
+    --moonshot-700: #2B215B;
+    --moonshot-500: #575293;
+    --moonshot-300: #8887C0;
+    --moonshot-50: #EBE9F8;
+    --amethyst-400: #AF76FF;
+    --sapphire-400: #0AA6FF;
+    --emerald-400: #0BCD93;
+    --white: #FFFFFF;
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background: linear-gradient(135deg, var(--moonshot-50) 0%, #f0fff4 100%);
+    color: var(--moonshot-900);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Main Container */
+.container {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    max-width: 550px;
+    width: 100%;
+    box-shadow: 
+        0 4px 6px -1px rgba(16, 25, 53, 0.1),
+        0 2px 4px -1px rgba(16, 25, 53, 0.06),
+        0 0 0 1px rgba(136, 135, 192, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--emerald-400), var(--sapphire-400), var(--amethyst-400));
+    border-radius: 16px 16px 0 0;
+}
+
+/* Typography */
+h1 {
+    color: var(--moonshot-700);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+p {
+    color: var(--moonshot-500);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* DAG Info Section */
+.dag-info {
+    background: linear-gradient(135deg, var(--moonshot-50) 0%, rgba(11, 205, 147, 0.05) 100%);
+    border: 1px solid var(--moonshot-300);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.info-item:not(:last-child) {
+    border-bottom: 1px solid rgba(136, 135, 192, 0.2);
+}
+
+.label {
+    font-weight: 600;
+    color: var(--moonshot-700);
+    font-size: 0.9rem;
+}
+
+.value {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    background: var(--white);
+    color: var(--emerald-400);
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(11, 205, 147, 0.2);
+    word-break: break-all;
+    max-width: 60%;
+    text-align: right;
+}
+
+/* Professional Button Design - DAG Theme */
+.btn {
+    background: linear-gradient(135deg, var(--emerald-400) 0%, #0bb583 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 4px 12px rgba(11, 205, 147, 0.3),
+        0 2px 4px rgba(11, 205, 147, 0.2);
+    position: relative;
+    overflow: hidden;
+    min-width: 160px;
+    margin-top: 1rem;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(11, 205, 147, 0.4),
+        0 4px 12px rgba(11, 205, 147, 0.3);
+    background: linear-gradient(135deg, #0dd89e 0%, #0aa578 100%);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    transition: transform 0.1s ease;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 
+        0 8px 25px rgba(11, 205, 147, 0.4),
+        0 4px 12px rgba(11, 205, 147, 0.3),
+        0 0 0 3px rgba(11, 205, 147, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem;
+    }
+    
+    .container {
+        padding: 2rem 1.5rem;
+        border-radius: 12px;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    p {
+        font-size: 0.95rem;
+    }
+    
+    .dag-info {
+        padding: 1rem;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .value {
+        max-width: 100%;
+        text-align: left;
+    }
+    
+    .btn {
+        padding: 0.875rem 1.75rem;
+        font-size: 0.95rem;
+        min-width: 140px;
+    }
+}
+
+/* Subtle Animation */
+.container {
+    animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* DAG Info Animation */
+.dag-info {
+    animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

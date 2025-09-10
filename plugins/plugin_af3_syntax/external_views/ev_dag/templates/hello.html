@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello World - DAG</title>
+    <link rel="stylesheet" type="text/css" href="/ev-dag-plugin/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hello Friend! 😊</h1>
+        <p>This is an example for a DAG external view plugin. The page is accessible from individual DAG pages.</p>
+        
+        <div class="dag-info">
+            <div class="info-item">
+                <span class="label">DAG ID:</span>
+                <span class="value" id="dagId">{{DAG_ID}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Status:</span>
+                <span class="value">Active</span>
+            </div>
+        </div>
+        
+        <button class="btn" id="helloButton">
+            Hello Airflow!
+        </button>
+    </div>
+
+    <script src="/ev-dag-plugin/static/script.js"></script>
+</body>
+
+</html>

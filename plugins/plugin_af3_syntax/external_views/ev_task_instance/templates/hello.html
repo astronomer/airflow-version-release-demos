@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello World - Task Instance</title>
+    <link rel="stylesheet" type="text/css" href="/ev-task-instance-plugin/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hello Friend! 😊</h1>
+        <p>This is an example for a task instance external view plugin. The page is accessible from individual task instance pages.</p>
+        
+        <div class="task-instance-info">
+            <div class="info-item">
+                <span class="label">DAG ID:</span>
+                <span class="value" id="dagId">{{DAG_ID}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Run ID:</span>
+                <span class="value" id="runId">{{RUN_ID}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Task ID:</span>
+                <span class="value" id="taskId">{{TASK_ID}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Map Index:</span>
+                <span class="value" id="mapIndex">{{MAP_INDEX}}</span>
+            </div>
+        </div>
+        
+        <button class="btn" id="helloButton">
+            Hello Airflow!
+        </button>
+    </div>
+
+    <script src="/ev-task-instance-plugin/static/script.js"></script>
+</body>
+
+</html>

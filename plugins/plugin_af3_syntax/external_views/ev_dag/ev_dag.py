@@ -1,11 +1,10 @@
 """
-External View Plugin - Navigation
+External View Plugin - DAG
 
-This plugin adds a link to the navigation menu under Browse -> Plugin Example - External View. 
-It opens a separate page.
+This plugin adds a link to individual DAG pages. 
+It opens a separate page with DAG specific information.
 """
 
-import os
 from pathlib import Path
 from airflow.plugins_manager import AirflowPlugin
 from fastapi import FastAPI
@@ -15,7 +14,7 @@ PLUGIN_DIR = Path(__file__).parent
 TEMPLATES_DIR = PLUGIN_DIR / "templates"
 STATIC_DIR = PLUGIN_DIR / "static"
 
-app = FastAPI(title="Nav Hello World", version="1.0.0")
+app = FastAPI(title="DAG Hello World", version="1.0.0")
 
 
 def load_template(template_name: str) -> str:
@@ -26,10 +25,12 @@ def load_template(template_name: str) -> str:
     return "<html><body><h1>Template not found</h1></body></html>"
 
 
-@app.get("/hello")
-async def hello_world():
-    """Modular Hello World page using separate HTML template"""
+@app.get("/hello/{dag_id}")
+async def hello_dag(dag_id: str):
+    """DAG specific Hello World page using separate HTML template"""
     html_content = load_template("hello.html")
+    # Replace template variables
+    html_content = html_content.replace("{{DAG_ID}}", dag_id)
     return HTMLResponse(content=html_content)
 
 
@@ -54,20 +55,18 @@ async def serve_static_files(file_name: str):
     return HTMLResponse(content="File not found", status_code=404)
 
 
-class NavigationExternalViewPlugin(AirflowPlugin):
-    name = "nav_hello_world"
+class DAGExternalViewPlugin(AirflowPlugin):
+    name = "dag_hello_world"
     
     fastapi_apps = [{
         "app": app,
-        "url_prefix": "/ev-nav-plugin",
-        "name": "External View - Navigation"
+        "url_prefix": "/ev-dag-plugin",
+        "name": "External View - DAG"
     }]
-    
 
     external_views = [{
-        "name": "Plugin Example - External View",
-        "href": "/ev-nav-plugin/hello",
-        "destination": "nav",     
-        "category": "browse",
-        "url_route": "nav_plugin"  # Makes it appear in UI
+        "name": "Plugin Example - DAG",
+        "href": "/ev-dag-plugin/hello/{{DAG_ID}}",
+        "destination": "dag",     # This puts it on individual DAG pages
+        "url_route": "dag_plugin"  # Makes it appear in UI
     }]

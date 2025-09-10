@@ -1,21 +1,22 @@
 /**
- * External View Navigation Plugin - Professional JavaScript
- * Enhanced interactions and animations for the navigation plugin
+ * External View DAG Plugin - Professional JavaScript
+ * Enhanced interactions for DAG specific functionality
  */
 
-console.log('🌟 External View Navigation Plugin loaded successfully');
+console.log('🚁 External View DAG Plugin loaded successfully');
 
-// Professional plugin initialization
-class NavigationPlugin {
+// Professional DAG plugin initialization
+class DAGPlugin {
     constructor() {
         this.button = null;
         this.container = null;
+        this.dagId = null;
         this.isAnimating = false;
         this.init();
     }
 
     init() {
-        console.log('🚀 Initializing Navigation Plugin...');
+        console.log('🚀 Initializing DAG Plugin...');
         
         // Wait for DOM to be fully ready
         if (document.readyState === 'loading') {
@@ -29,6 +30,9 @@ class NavigationPlugin {
         this.button = document.getElementById('helloButton');
         this.container = document.querySelector('.container');
         
+        // Extract DAG ID from the page
+        this.dagId = document.getElementById('dagId')?.textContent || 'unknown';
+        
         if (!this.button || !this.container) {
             console.warn('⚠️ Plugin elements not found');
             return;
@@ -36,11 +40,14 @@ class NavigationPlugin {
 
         this.bindEvents();
         this.addAccessibility();
-        console.log('✅ Navigation Plugin initialized successfully');
+        this.addDAGSpecificFeatures();
+        console.log('✅ DAG Plugin initialized successfully', {
+            dagId: this.dagId
+        });
     }
 
     bindEvents() {
-        // Main button click with professional feedback
+        // Main button click with DAG specific feedback
         this.button.addEventListener('click', (e) => this.handleButtonClick(e));
         
         // Enhanced hover interactions
@@ -52,18 +59,47 @@ class NavigationPlugin {
     }
 
     addAccessibility() {
-        // Ensure proper ARIA attributes
-        this.button.setAttribute('aria-label', 'Trigger greeting interaction');
+        // Ensure proper ARIA attributes with DAG context
+        this.button.setAttribute('aria-label', `Manage DAG ${this.dagId}`);
         this.button.setAttribute('role', 'button');
         
         // Ensure keyboard focus is visible
         this.button.addEventListener('focus', () => {
-            this.button.style.outline = '2px solid var(--sapphire-400)';
+            this.button.style.outline = '2px solid var(--emerald-400)';
             this.button.style.outlineOffset = '2px';
         });
         
         this.button.addEventListener('blur', () => {
             this.button.style.outline = 'none';
+        });
+    }
+
+    addDAGSpecificFeatures() {
+        // Add hover effects to DAG info items
+        const infoItems = document.querySelectorAll('.info-item');
+        infoItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.background = 'rgba(11, 205, 147, 0.05)';
+                item.style.transform = 'translateX(4px)';
+                item.style.transition = 'all 0.2s ease';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.background = 'transparent';
+                item.style.transform = 'translateX(0)';
+            });
+        });
+
+        // Add copy-to-clipboard functionality for DAG ID
+        const values = document.querySelectorAll('.value');
+        values.forEach(value => {
+            value.style.cursor = 'pointer';
+            value.title = 'Click to copy';
+            
+            value.addEventListener('click', () => {
+                this.copyToClipboard(value.textContent);
+                this.showCopyNotification(value.textContent);
+            });
         });
     }
 
@@ -73,14 +109,15 @@ class NavigationPlugin {
         event.preventDefault();
         this.isAnimating = true;
         
-        // Professional success feedback
-        this.showSuccessNotification();
+        // DAG specific success feedback
+        this.showDAGManagementNotification();
         
         // Button click animation
         this.animateButtonClick();
         
-        // Log interaction
-        console.log('🎉 Button interaction triggered', {
+        // Log DAG specific interaction
+        console.log('🌿 DAG management triggered', {
+            dagId: this.dagId,
             timestamp: new Date().toISOString(),
             userAgent: navigator.userAgent.split(' ')[0]
         });
@@ -153,8 +190,8 @@ class NavigationPlugin {
         }, 600);
     }
 
-    showSuccessNotification() {
-        // Create professional notification
+    showDAGManagementNotification() {
+        // Create DAG specific notification
         const notification = document.createElement('div');
         notification.style.cssText = `
             position: fixed;
@@ -170,6 +207,7 @@ class NavigationPlugin {
             animation: slideInRight 0.3s ease-out forwards;
             transform: translateX(100%);
             opacity: 0;
+            max-width: 300px;
         `;
         
         notification.innerHTML = `
@@ -214,19 +252,73 @@ class NavigationPlugin {
                     notification.parentNode.removeChild(notification);
                 }
             }, 300);
-        }, 3000);
+        }, 4000);
+    }
+
+    async copyToClipboard(text) {
+        try {
+            await navigator.clipboard.writeText(text);
+        } catch (err) {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+        }
+    }
+
+    showCopyNotification(text) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span>📋</span>
+                <span>Copied: ${text.length > 15 ? text.substring(0, 15) + '...' : text}</span>
+            </div>
+        `;
+
+        // Add bounce animation
+        if (!document.getElementById('bounce-style')) {
+            const style = document.createElement('style');
+            style.id = 'bounce-style';
+            style.textContent = `
+                @keyframes bounceIn {
+                    0% { opacity: 0; transform: translateX(-50%) scale(0.3); }
+                    50% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+                    100% { opacity: 1; transform: translateX(-50%) scale(1); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        document.body.appendChild(notification);
+
+        // Auto-remove
+        setTimeout(() => {
+            notification.style.animation = 'fadeOut 0.2s ease-in forwards';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 200);
+        }, 2000);
     }
 }
 
 // Initialize the plugin
-const navigationPlugin = new NavigationPlugin();
+const dagPlugin = new DAGPlugin();
 
 // Export for potential external use
-window.NavigationPlugin = navigationPlugin;
+window.DAGPlugin = dagPlugin;
 
 // Professional console signature
 console.log(
-    '%c🌟 Navigation Plugin Ready %c| Professional External View Plugin for Airflow 3',
-    'background: linear-gradient(135deg, #AF76FF, #0AA6FF); color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold;',
+    '%c🌿 DAG Plugin Ready %c| Professional External View Plugin for Airflow 3',
+    'background: linear-gradient(135deg, #0BCD93, #AF76FF); color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold;',
     'color: #575293; font-weight: normal;'
 );
