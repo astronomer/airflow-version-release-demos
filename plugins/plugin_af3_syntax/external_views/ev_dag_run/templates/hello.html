@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello World - DAG Run</title>
+    <link rel="stylesheet" type="text/css" href="/ev-dag-run-plugin/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hello Friend! 😊</h1>
+        <p>This is an example for a DAG run external view plugin. The page is accessible for each individual DAG run page.</p>
+        
+        <div class="dag-info">
+            <div class="info-item">
+                <span class="label">DAG ID:</span>
+                <span class="value" id="dagId">{{DAG_ID}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Run ID:</span>
+                <span class="value" id="runId">{{RUN_ID}}</span>
+            </div>
+        </div>
+        
+        <button class="btn" id="helloButton">
+            Hello Airflow!
+        </button>
+    </div>
+
+    <script src="/ev-dag-run-plugin/static/script.js"></script>
+</body>
+
+</html>
