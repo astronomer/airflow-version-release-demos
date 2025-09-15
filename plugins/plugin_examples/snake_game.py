@@ -50,7 +50,6 @@ async def health_check():
     return {"status": "healthy", "service": "snake-game-plugin", "high_score": "∞"}
 
 
-# Plugin configuration - Snake Game!
 class SnakeGamePlugin(AirflowPlugin):
     name = "snake_game"
     
@@ -61,13 +60,11 @@ class SnakeGamePlugin(AirflowPlugin):
         "name": "Snake Game Plugin"
     }]
     
-    # External view - SECRET Easter Egg Snake game! 🥚🐍
     external_views = [{
         "name": "🐍 Snake Game",
         "href": "/snake-game/game",
-        "destination": "nav",
-        "category": "browse",
+        "destination": "dag_run",
+        # "category": "browse",
         "url_route": "snake_game"
     }]
     
-    # No dashboard widget - keep it secret! 🤫

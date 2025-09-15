@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>📦 XCom Viewer - {{TASK_ID}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/xcom-viewer/static/xcom_viewer.css">
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</head>
+<body>
+    <div class="xcom-container">
+        <!-- Header with task info -->
+        <div class="xcom-header">
+            <div class="task-info">
+                <h1 class="page-title">📦 XCom Viewer</h1>
+                <div class="task-breadcrumb">
+                    <span class="breadcrumb-item">{{DAG_ID}}</span>
+                    <span class="breadcrumb-separator">→</span>
+                    <span class="breadcrumb-item">{{TASK_ID}}</span>
+                    <span class="breadcrumb-separator">→</span>
+                    <span class="breadcrumb-item">{{RUN_ID}}</span>
+                    <span class="breadcrumb-separator">→</span>
+                    <span class="breadcrumb-item map-index">{{MAP_INDEX}}</span>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <button class="action-button" onclick="refreshXComData()" id="refreshButton">
+                    🔄 Refresh
+                </button>
+                <button class="action-button" onclick="exportXComData()" id="exportButton">
+                    📄 Export JSON
+                </button>
+            </div>
+        </div>
+        
+        <!-- Loading state -->
+        <div class="loading-container" id="loadingContainer">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <h3>Loading XCom Data...</h3>
+                <p>Fetching data from Airflow API</p>
+            </div>
+        </div>
+        
+        <!-- Error state -->
+        <div class="error-container" id="errorContainer" style="display: none;">
+            <div class="error-content">
+                <h3>🚨 Error Loading XCom Data</h3>
+                <p id="errorMessage">Something went wrong</p>
+                <button class="action-button" onclick="refreshXComData()">
+                    🔄 Try Again
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main content -->
+        <div class="xcom-content" id="xcomContent" style="display: none;">
+            <!-- Task Instance Info -->
+            <div class="info-panel">
+                <h3>📋 Task Instance Info</h3>
+                <div class="info-grid" id="taskInstanceInfo">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- XCom Statistics -->
+            <div class="stats-panel">
+                <h3>📊 XCom Statistics</h3>
+                <div class="stats-grid" id="xcomStats">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- XCom Entries -->
+            <div class="xcoms-panel">
+                <div class="panel-header">
+                    <h3>📦 XCom Entries</h3>
+                    <div class="panel-controls">
+                        <button class="control-button" onclick="expandAllXComs()">
+                            📖 Expand All
+                        </button>
+                        <button class="control-button" onclick="collapseAllXComs()">
+                            📕 Collapse All
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="xcoms-list" id="xcomsList">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                
+                <div class="no-xcoms" id="noXComsMessage" style="display: none;">
+                    <div class="no-xcoms-content">
+                        <h4>📭 No XCom Data Found</h4>
+                        <p>This task instance doesn't have any XCom entries.</p>
+                        <p>XCom data is created when tasks return values or use <code>xcom_push()</code>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Global variables
+        const DAG_ID = '{{DAG_ID}}';
+        const RUN_ID = '{{RUN_ID}}';
+        const TASK_ID = '{{TASK_ID}}';
+        const MAP_INDEX = '{{MAP_INDEX}}';
+        let xcomData = null;
+        
+        // Update breadcrumb display for map index
+        document.addEventListener('DOMContentLoaded', () => {
+            const mapIndexElement = document.querySelector('.breadcrumb-item.map-index');
+            if (mapIndexElement) {
+                if (MAP_INDEX === '-1') {
+                    mapIndexElement.textContent = 'Non-mapped';
+                    mapIndexElement.style.background = 'var(--moonshot-300)';
+                    mapIndexElement.style.color = 'var(--white)';
+                } else {
+                    mapIndexElement.textContent = `Map ${MAP_INDEX}`;
+                }
+            }
+        });
+    </script>
+    <script src="/xcom-viewer/static/xcom_viewer.js"></script>
+</body>
+</html>

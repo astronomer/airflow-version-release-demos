@@ -163,13 +163,5 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// CRITICAL: Set the global variable that matches our plugin name
-globalThis['DAG Toggle Widget'] = DAGToggleWidget;
-
-// Also set the fallback that Airflow looks for
-globalThis.AirflowPlugin = DAGToggleWidget;
-
-console.log('DAG Toggle Widget globals set:', {
-    'DAG Toggle Widget': typeof globalThis['DAG Toggle Widget'],
-    'AirflowPlugin': typeof globalThis.AirflowPlugin
-});
+globalThis['DAG Toggle Widget'] = DAGToggleWidget; // Matching the plugin name
+globalThis.AirflowPlugin = DAGToggleWidget; // Fallback that Airflow looks for

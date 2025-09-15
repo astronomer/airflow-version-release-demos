@@ -58,18 +58,18 @@ async def serve_static_files(file_name: str):
     return HTMLResponse(content="File not found", status_code=404)
 
 
-class TaskInstanceExternalViewPlugin(AirflowPlugin):
-    name = "task_instance_hello_world"
+# class TaskInstanceExternalViewPlugin(AirflowPlugin):
+#     name = "task_instance_hello_world"
     
-    fastapi_apps = [{
-        "app": app,
-        "url_prefix": "/ev-task-instance-plugin",
-        "name": "External View - Task Instance"
-    }]
+#     fastapi_apps = [{
+#         "app": app,
+#         "url_prefix": "/ev-task-instance-plugin",
+#         "name": "External View - Task Instance"
+#     }]
 
-    external_views = [{
-        "name": "Plugin Example - Task Instance",
-        "href": "/ev-task-instance-plugin/hello/{{DAG_ID}}/{{RUN_ID}}/{{TASK_ID}}/{{MAP_INDEX}}",
-        "destination": "task_instance",     # This puts it on individual task instance pages
-        "url_route": "task_instance_plugin"  # Makes it appear in UI
-    }]
+#     external_views = [{
+#         "name": "Plugin Example - Task Instance",
+#         "href": "/ev-task-instance-plugin/hello/{{DAG_ID}}/{{RUN_ID}}/{{TASK_ID}}/{{MAP_INDEX}}",
+#         "destination": "task_instance",     # This puts it on individual task instance pages
+#         "url_route": "task_instance_plugin"  # Makes it appear in UI
+#     }]

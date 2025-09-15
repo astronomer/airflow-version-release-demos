@@ -55,18 +55,18 @@ async def serve_static_files(file_name: str):
     return HTMLResponse(content="File not found", status_code=404)
 
 
-class DAGExternalViewPlugin(AirflowPlugin):
-    name = "dag_hello_world"
+# class DAGExternalViewPlugin(AirflowPlugin):
+#     name = "dag_hello_world"
     
-    fastapi_apps = [{
-        "app": app,
-        "url_prefix": "/ev-dag-plugin",
-        "name": "External View - DAG"
-    }]
+#     fastapi_apps = [{
+#         "app": app,
+#         "url_prefix": "/ev-dag-plugin",
+#         "name": "External View - DAG"
+#     }]
 
-    external_views = [{
-        "name": "Plugin Example - DAG",
-        "href": "/ev-dag-plugin/hello/{{DAG_ID}}",
-        "destination": "dag",     # This puts it on individual DAG pages
-        "url_route": "dag_plugin"  # Makes it appear in UI
-    }]
+#     external_views = [{
+#         "name": "Plugin Example - DAG",
+#         "href": "/ev-dag-plugin/hello/{{DAG_ID}}",
+#         "destination": "dag",     # This puts it on individual DAG pages
+#         "url_route": "dag_plugin"  # Makes it appear in UI
+#     }]

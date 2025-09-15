@@ -1,10 +1,3 @@
-"""
-External View Plugin - DAG Run
-
-This plugin adds a link to individual DAG run pages. 
-It opens a separate page with DAG run specific information.
-"""
-
 from pathlib import Path
 from airflow.plugins_manager import AirflowPlugin
 from fastapi import FastAPI
@@ -56,18 +49,18 @@ async def serve_static_files(file_name: str):
     return HTMLResponse(content="File not found", status_code=404)
 
 
-class DAGRunExternalViewPlugin(AirflowPlugin):
-    name = "dag_run_hello_world"
+# class DAGRunExternalViewPlugin(AirflowPlugin):
+#     name = "dag_run_hello_world"
     
-    fastapi_apps = [{
-        "app": app,
-        "url_prefix": "/ev-dag-run-plugin",
-        "name": "External View - DAG Run"
-    }]
+#     fastapi_apps = [{
+#         "app": app,
+#         "url_prefix": "/ev-dag-run-plugin",
+#         "name": "External View - DAG Run"
+#     }]
 
-    external_views = [{
-        "name": "Plugin Example - DAG Run",
-        "href": "/ev-dag-run-plugin/hello/{{DAG_ID}}/{{RUN_ID}}",
-        "destination": "dag_run",     
-        "url_route": "dag_run_plugin"  
-    }]
+#     external_views = [{
+#         "name": "Plugin Example - DAG Run",
+#         "href": "/ev-dag-run-plugin/hello/{{DAG_ID}}/{{RUN_ID}}",
+#         "destination": "dag_run",     
+#         "url_route": "dag_run_plugin"  
+#     }]
