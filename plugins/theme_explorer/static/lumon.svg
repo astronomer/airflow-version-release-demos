@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <g stroke="#86D6E1" stroke-width="5.6">
+    <!-- Outer globe ellipse -->
+    <ellipse cx="200" cy="200" rx="184" ry="144"/>
+
+    <!-- Longitude arcs -->
+    <ellipse cx="200" cy="200" rx="120" ry="144"/>
+    <ellipse cx="200" cy="200" rx="56" ry="144"/>
+
+    <!-- Upper latitude arc -->
+    <path d="M 28 144 Q 110 96 200 92 Q 290 96 372 144"/>
+    <!-- Lower latitude arc -->
+    <path d="M 28 256 Q 110 304 200 308 Q 290 304 372 256"/>
+
+    <!-- Horizontal band lines -->
+    <line x1="16" y1="172" x2="384" y2="172"/>
+    <line x1="16" y1="228" x2="384" y2="228"/>
+  </g>
+
+  <!-- Mask band behind text -->
+  <rect x="60" y="174" width="280" height="52" fill="#010c1c"/>
+
+  <!-- LUMON text -->
+  <text x="200" y="212" text-anchor="middle" fill="#86D6E1"
+        font-family="'Arial Black', 'Futura', 'Helvetica Neue', Arial, sans-serif"
+        font-weight="900" font-size="48" letter-spacing="8">LUMON</text>
+
+  <!-- Teardrop inside the O -->
+  <path d="M 246 194 l -6 10 a 6 6 0 0 0 12 0 z" fill="#010c1c"/>
+</svg>
