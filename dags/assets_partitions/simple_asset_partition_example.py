@@ -39,7 +39,7 @@ def simple_asset_partition_example_downstream():
         print(context["dag_run"].partition_key)
 
     _process_data_from_yesterday = process_data_from_yesterday()
-    
+
     BashOperator(
         task_id="process_data_from_yesterday_bash",
         bash_command="echo {{ dag_run.partition_key }}",
