@@ -3,7 +3,7 @@ from airflow.sdk import Asset, dag, task
 my_out_in_asset = Asset("my_out_in_asset")
 
 
-@dag
+@dag(tags=["Asset basics"])
 def my_out_in_upstream_dag():
 
     @task
@@ -24,7 +24,7 @@ def my_out_in_upstream_dag():
 my_out_in_upstream_dag()
 
 
-@dag  # can be scheduled on an asset but does not have to be to use an asset as an inlet
+@dag(tags=["Asset basics"])  # can be scheduled on an asset but does not have to be to use an asset as an inlet
 def my_out_in_downstream_dag():
 
     @task(inlets=[my_out_in_asset])

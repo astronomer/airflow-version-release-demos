@@ -4,10 +4,10 @@ from airflow.sdk import (
     task,
     CronPartitionTimetable,
     PartitionedAssetTimetable,
-    ToHourlyMapper,
-    ToDailyMapper,
-    ToWeeklyMapper,
-    ToQuarterlyMapper,
+    StartOfHourMapper,
+    StartOfDayMapper,
+    StartOfWeekMapper,
+    StartOfQuarterMapper,
     AllowedKeyMapper
 )
 
@@ -44,9 +44,9 @@ asset_mappers_producer_dag_2()
 @dag(
     schedule=PartitionedAssetTimetable(
         assets=(asset_mappers_example_1 | asset_mappers_example_2),  # scheduled to run when EITHER asset has an event
-        default_partition_mapper=ToDailyMapper(), 
+        default_partition_mapper=StartOfDayMapper(), 
         partition_mapper_config={
-            asset_mappers_example_2: ToWeeklyMapper(),
+            asset_mappers_example_2: StartOfWeekMapper(),
         },
     )
 )
@@ -66,7 +66,7 @@ asset_mapper_consumer_dag_1()
 @dag(
     schedule=PartitionedAssetTimetable(
         assets=(asset_mappers_example_1 & asset_mappers_example_2),  # scheduled to run when BOTH assets have an event
-        default_partition_mapper=ToQuarterlyMapper(),  # needs to be the same mapper for all assets in the AND condition, or the Dag would never trigger
+        default_partition_mapper=StartOfQuarterMapper(),  # needs to be the same mapper for all assets in the AND condition, or the Dag would never trigger
     )
 )
 def asset_mapper_consumer_dag_2():  

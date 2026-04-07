@@ -3,7 +3,7 @@ from airflow.sdk import Asset, dag, task
 data_ready = Asset("data_ready")
 
 
-@dag
+@dag(tags=["Asset basics"])
 def my_etl_dag():
 
     @task(outlets=[data_ready])
@@ -16,7 +16,7 @@ def my_etl_dag():
 my_etl_dag()
 
 
-@dag(schedule=[data_ready])
+@dag(schedule=[data_ready], tags=["Asset basics"])
 def my_ml_dag():
 
     @task

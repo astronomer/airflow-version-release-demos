@@ -4,7 +4,7 @@ from airflow.sdk import (
     Asset,
     ProductMapper,
     IdentityMapper,
-    ToDailyMapper,
+    StartOfDayMapper,
     AllowedKeyMapper,
     task,
 )
@@ -17,7 +17,7 @@ from airflow.sdk import (
         ),  # the partition key needs to be provided in the format `Finance|2026-03-16T09:00:00|Revenue`
         partition_mapper_config={
             Asset("my_partitioned_asset"): ProductMapper(
-                IdentityMapper(), ToDailyMapper(), AllowedKeyMapper(["Revenue", "ARR"])
+                IdentityMapper(), StartOfDayMapper(), AllowedKeyMapper(["Revenue", "ARR"])
             ),
         },
     )
