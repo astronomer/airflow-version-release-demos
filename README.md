@@ -37,6 +37,7 @@ Extra steps, after the steps above setup:
 1. Build the Java bundle. This uses a Gradle Docker image, so no local JDK or Gradle is needed:
    ```
    docker run --rm -v "$PWD/include/java_sdk":/home/gradle/project -v airflow_java_sdk_gradle_cache:/home/gradle/.gradle -w /home/gradle/project gradle:8.14-jdk21 gradle --no-daemon bundle
+   mkdir -p include/java_bundle
    cp include/java_sdk/build/bundle/*.jar include/java_bundle/
    ```
    The jar is plain JVM bytecode, so the same build works on Apple Silicon and Intel/AMD.
