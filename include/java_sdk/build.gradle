@@ -1,0 +1,33 @@
+plugins {
+    id("org.apache.airflow.sdk") version "${projectVersion}"
+}
+
+repositories {
+    maven {
+        url "https://repository.apache.org/content/repositories/snapshots/"
+        mavenContent { snapshotsOnly() }
+    }
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor("org.apache.airflow:airflow-sdk-processor:${projectVersion}")
+    implementation("org.apache.airflow:airflow-sdk:${projectVersion}")
+    implementation("org.slf4j:slf4j-simple:2.0.17")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+sourceSets {
+    main {
+        java.srcDir("src/java")
+        resources.srcDir("src/resources")
+    }
+}
+
+airflowBundle {
+    mainClass = "com.astronomer.javasdk.EtlBundleBuilder"
+}
