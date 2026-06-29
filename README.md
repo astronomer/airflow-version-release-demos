@@ -42,3 +42,28 @@ Extra steps, after the steps above setup:
    ```
    The jar is plain JVM bytecode, so the same build works on Apple Silicon and Intel/AMD.
 2. Run `astro dev restart`, then trigger the `java_task_syntax_example` Dag.
+
+## Run the Go and Java SDK Dags on Astro
+
+The steps above cover local execution with `astro dev start`. To run the same Dags on an Astro Deployment, three extra things need to be in place.
+
+1. Set the SDK environment variables on the Deployment. Add the following two variables via the Astro UI or the Astro CLI (see [Manage environment variables](https://www.astronomer.io/docs/astro/manage-env-vars)). The values are the same JSON used locally in `.env_example`, condensed to one line. For example, for both SDKs:
+
+   - `AIRFLOW__SDK__COORDINATORS`
+     ```
+     {"go":{"classpath":"airflow.sdk.coordinators.executable.ExecutableCoordinator","kwargs":{"executables_root":["/usr/local/airflow/include/go_bundle/bin"]}},"java":{"classpath":"airflow.sdk.coordinators.java.JavaCoordinator","kwargs":{"jars_root":["/usr/local/airflow/include/java_bundle"]}}}
+     ```
+   - `AIRFLOW__SDK__QUEUE_TO_COORDINATOR`
+     ```
+     {"golang": "go", "java": "java"}
+     ```
+
+2. Create the matching [worker queues](https://www.astronomer.io/docs/astro/configure-worker-queues) on the Deployment. In the Astro UI under **Worker queues**, add one queue named `golang` and one named `java`. The queue names must match the keys in `AIRFLOW__SDK__QUEUE_TO_COORDINATOR`, otherwise tasks routed to those queues will be stuck as `queued`.
+
+3. Make sure the Go bundle uses amd64; the bundle must be packed with `--goarch amd64` to run on Astro:
+
+   ```
+   cd include/go_bundle
+   go tool airflow-go-pack --goos linux --goarch amd64 --output ./bin/go_task_syntax_example .
+   ```
+   The Java jar is architecture-neutral and does not need a separate build.
