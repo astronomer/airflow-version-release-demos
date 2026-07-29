@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🐍 Snake Game - Airflow</title>
+    <link rel="stylesheet" type="text/css" href="/snake-game/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">🐍 Snake Game</h1>
+            <div class="game-stats">
+                <div class="stat">
+                    <span class="stat-label">Score</span>
+                    <span class="stat-value" id="currentScore">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">High Score</span>
+                    <span class="stat-value" id="highScore">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-board">
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            
+            <div class="game-overlay" id="gameOverlay">
+                <div class="overlay-content">
+                    <h2 id="overlayTitle">🐍 Ready to Play?</h2>
+                    <p id="overlayMessage">Use arrow keys or WASD to move</p>
+                    <button class="play-button" id="playButton" onclick="startGame()">
+                        Start Game
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-controls">
+            <div class="controls-info">
+                <h3>🎮 Controls</h3>
+                <div class="control-keys">
+                    <div class="key-group">
+                        <span class="key">↑</span>
+                        <span class="key">←</span>
+                        <span class="key">↓</span>
+                        <span class="key">→</span>
+                    </div>
+                    <span class="or">or</span>
+                    <div class="key-group">
+                        <span class="key">W</span>
+                        <span class="key">A</span>
+                        <span class="key">S</span>
+                        <span class="key">D</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-options">
+                <div class="game-mode">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="borderToggle" onchange="toggleBorderMode()">
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-text">🚧 Borders</span>
+                    </label>
+                    <div class="mode-description" id="modeDescription">
+                        Classic mode: Hit walls = Game Over
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-actions">
+                <button class="action-button" id="pauseButton" onclick="togglePause()" disabled>
+                    ⏸️ Pause
+                </button>
+                <button class="action-button" id="restartButton" onclick="restartGame()" disabled>
+                    🔄 Restart
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/snake-game/static/game.js"></script>
+</body>
+</html>

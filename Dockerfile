@@ -1,4 +1,4 @@
-FROM astrocrpublic.azurecr.io/runtime-dev:3.3-1-alpha3
+FROM astrocrpublic.azurecr.io/runtime:3.3-2
 
 # pyspark bundles spark-submit under its package dir but not on PATH. The SparkSubmitHook
 # invokes a bare "spark-submit", so wrap the bundled one (with SPARK_HOME set) onto PATH.

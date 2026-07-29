@@ -5,8 +5,8 @@ from airflow.sdk import (
     CronPartitionTimetable,
     PartitionedAssetTimetable,
     RollupMapper,
-    StartOfDayMapper,
-    DayWindow,
+    StartOfWeekMapper,
+    WeekWindow,
 )
 
 from airflow.providers.standard.operators.bash import BashOperator
@@ -16,9 +16,9 @@ data_ready = Asset("many_to_one_asset")
 
 @dag(
     schedule=CronPartitionTimetable(
-        "0 * * * *", timezone="UTC", run_offset=-1
-    ),  # run once per hour, partition key offset by -1 hour
-    tags=["Many to one partition"],
+        "0 0 * * *", timezone="UTC"
+    ),
+    tags=["partitions", "webinar"],
 )
 def many_to_one_upstream():
 
@@ -35,13 +35,11 @@ many_to_one_upstream()
 @dag(
     schedule=PartitionedAssetTimetable(
         assets=data_ready,
-        # the 24 hourly upstream partitions of a day roll up into one daily
-        # downstream run (WaitForAll default: fires once all 24 hourly keys arrive)
         default_partition_mapper=RollupMapper(
-            upstream_mapper=StartOfDayMapper(), window=DayWindow()
+            upstream_mapper=StartOfWeekMapper(), window=WeekWindow()
         ),
     ),
-    tags=["Many to one partition"],
+    tags=["partitions", "webinar"],
 )
 def many_to_one_downstream():
 
@@ -53,7 +51,7 @@ def many_to_one_downstream():
 
     BashOperator(
         task_id="process_per_day_bash",
-        bash_command="echo {{ dag_run.partition_key }}",
+        bash_command="echo '{{ dag_run.partition_key }}'",
     )
 
 

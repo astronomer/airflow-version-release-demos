@@ -20,12 +20,12 @@ MY_RETRY_POLICY = ExceptionRetryPolicy(
             exception=ValueError,
             action=RetryAction.RETRY,
             retry_delay=duration(seconds=3),
-            reason="A",  # In the logs in post-execute
+            reason="Maybe next time?",  # In the logs in post-execute
         ),
         RetryRule(
-            exception="airflow.sdk.exceptions.AirflowException",  # can be the dottet path or the class
+            exception="airflow.sdk.exceptions.AirflowException",  # can be the dotted path or the class
             action=RetryAction.FAIL,
-            reason="B",
+            reason="Nothing can fix this!",
         ),
         RetryRule(
             exception=[
@@ -39,43 +39,43 @@ MY_RETRY_POLICY = ExceptionRetryPolicy(
             exception=KeyError,
             action=RetryAction.FAIL,
             reason="D",
-            match_subclasses=False,  # default=True then all subclasses of ValueError match as well
+            match_subclasses=False,  # default=True then all subclasses of KeyError match as well
         ),
     ],
 )
 
 
-@dag(tags=["pluggable retries"])
+@dag(tags=["pluggable retries", "webinar"])
 def exception_retry_policy_example():
 
     @task_group
     def examples_exception_retry_policy():
 
         @task(
-            retries=5, retry_policy=MY_RETRY_POLICY
+            retries=5, retry_policy=MY_RETRY_POLICY, max_retry_delay=duration(seconds=60)
         )  # the retries count is still the MAX retries, even if the policy says retry
-        def t0(**context):
+        def value_error_task(**context):
             raise ValueError
 
-        t0()
+        value_error_task()
 
         @task(retries=5, retry_policy=MY_RETRY_POLICY)
-        def t1(**context):
+        def airflow_exception_task(**context):
             raise AirflowException
 
-        t1()
+        airflow_exception_task()
 
         @task(retries=1, retry_policy=MY_RETRY_POLICY, retry_delay=duration(seconds=10))
-        def t2(**context):
+        def attribute_error_task(**context):
             raise AttributeError
 
-        t2()
+        attribute_error_task()
 
         @task(retries=2, retry_policy=MY_RETRY_POLICY, retry_delay=duration(seconds=10))
-        def t3(**context):
+        def my_key_error_task(**context):
             raise MyKeyError  # Because this is a subclass and match_subclasses=False, the task does NOT fail
 
-        t3()
+        my_key_error_task()
 
     examples_exception_retry_policy()
 

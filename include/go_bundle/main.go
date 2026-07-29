@@ -1,6 +1,6 @@
 // Go SDK bundle for the go_task_syntax_example DAG.
 //
-// The DAG itself is authored in Python (dags/go_sdk/go_task_syntax_example.py).
+// The Dag itself is authored in Python (dags/go_sdk/go_task_syntax_example.py).
 // Only the `transform` task runs in Go: the Python `extract` task pushes a
 // value to XCom, this Go task reads it, sums the numbers in Go, and returns a
 // result map (pushed as transform's return_value XCom), which the Python

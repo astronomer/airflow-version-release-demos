@@ -4,6 +4,7 @@ from airflow.sdk import (
     task,
     CronPartitionTimetable,
     PartitionedAssetTimetable,
+    task_group
 )
 from airflow.providers.standard.operators.bash import BashOperator
 
@@ -20,7 +21,7 @@ def simple_asset_partition_example_upstream():
 
     @task(outlets=[data_ready])
     def process_yesterday_data(**context):
-        print(f"Partition key: {context['dag_run'].partition_key}")
+        print(f"Partition key: {context['partition_key']}")
 
     process_yesterday_data()
 
@@ -36,14 +37,40 @@ def simple_asset_partition_example_downstream():
 
     @task
     def process_data_from_yesterday(**context):
-        print(context["dag_run"].partition_key)
+        print(context["partition_key"])
+        print(context["partition_date"])
 
     _process_data_from_yesterday = process_data_from_yesterday()
 
     BashOperator(
         task_id="process_data_from_yesterday_bash",
-        bash_command="echo {{ dag_run.partition_key }}",
+        bash_command="echo {{ partition_key }} &",
     )
+
+    # from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator
+
+    # SQLExecuteQueryOperator(
+    #     task_id="execute_query",
+    #     conn_id="my_snowflake_conn",
+    #     sql="""
+    #     SELECT * FROM my_table 
+    #     WHERE 
+    #         my_timestamp >= DATEADD(day, -1, '{{ partition_date | ds }}') 
+    #         AND my_timestamp < '{{ partition_date | ds }}'
+    #     ;""",
+    # )
+
+    # SQLExecuteQueryOperator(
+    #     task_id="execute_query2",
+    #     conn_id="my_snowflake_conn",
+    #     sql="""
+    #     SELECT * FROM my_table 
+    #     WHERE 
+    #         my_timestamp >= DATEADD(day, -1, '{{ partition_key }}'::DATE) 
+    #         AND my_timestamp < '{{ partition_key }}'::DATE
+    #     ;""",
+    # )
+
 
 
 simple_asset_partition_example_downstream()

@@ -5,12 +5,10 @@ from airflow.sdk import (
     dag,
     task,
     PartitionedAssetTimetable,
-    PartitionAtRuntime,
-    AssetOrTimeSchedule,
 )
 from airflow.providers.standard.operators.bash import BashOperator
 
-data_ready = Asset("my_partition_at_runtime_asset")
+data_ready = Asset("programmatic_partition_segment")
 
 DEPARTMENTS = [
     "Engineering",
@@ -24,8 +22,8 @@ DEPARTMENTS = [
 ]
 
 
-@dag
-def my_partition_at_runtime_dag():
+@dag(tags=["partitions"])
+def programmatic_partition_segment_upstream():
 
     @task(outlets=[data_ready])
     def my_task(**context):
@@ -36,13 +34,14 @@ def my_partition_at_runtime_dag():
     my_task()
 
 
-my_partition_at_runtime_dag()
+programmatic_partition_segment_upstream()
+
 
 @dag(
     schedule=PartitionedAssetTimetable(assets=data_ready),
-    tags=["Custom asset partition"],
+    tags=["partitions"],
 )
-def custom_asset_partition_downstream():
+def programmatic_partition_segment_downstream():
 
     @task
     def process_data_from_yesterday(**context):
@@ -56,4 +55,4 @@ def custom_asset_partition_downstream():
     )
 
 
-custom_asset_partition_downstream()
+programmatic_partition_segment_downstream()

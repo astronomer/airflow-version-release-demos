@@ -3,7 +3,7 @@ import random
 from airflow.sdk import dag, task, chain
 
 
-@dag(tags=["go sdk"])
+@dag(tags=["Go SDK"])
 def go_task_syntax_example():
     @task
     def extract():

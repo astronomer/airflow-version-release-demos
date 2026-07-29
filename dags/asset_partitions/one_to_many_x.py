@@ -18,7 +18,7 @@ data_ready = Asset("one_to_many_asset")
     schedule=CronPartitionTimetable(
         "0 0 * * *", timezone="UTC", run_offset=-1
     ),  # run once per day at midnight UTC, partition key offset by -1 day
-    tags=["One to many partition"],
+    tags=["partitions", "webinar"],
 )
 def one_to_many_upstream():
 
@@ -38,10 +38,10 @@ one_to_many_upstream()
         # one daily upstream partition fans out into its 24 hourly downstream runs
         # (DayWindow defaults its downstream mapper to StartOfHourMapper)
         default_partition_mapper=FanOutMapper(
-            upstream_mapper=StartOfDayMapper(), window=DayWindow()
+            upstream_mapper=StartOfDayMapper(), window=DayWindow(), #max_downstream_keys=10
         ),
     ),
-    tags=["One to many partition"],
+    tags=["partitions",  "webinar"],
 )
 def one_to_many_downstream():
 

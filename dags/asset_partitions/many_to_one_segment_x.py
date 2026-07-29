@@ -1,5 +1,3 @@
-"""http://apache-airflow-docs.s3-website.eu-central-1.amazonaws.com/docs/apache-airflow/stable/authoring-and-scheduling/assets.html#segment-categorical-rollup"""
-
 from airflow.sdk import (
     dag,
     task,
@@ -13,7 +11,7 @@ import random
 
 from airflow.providers.standard.operators.bash import BashOperator
 
-data_ready = Asset("process_sales_contracts")
+data_ready = Asset("many_to_one_segment")
 
 DEPARTMENTS = [
     "Engineering",
@@ -23,7 +21,7 @@ DEPARTMENTS = [
 ]
 
 
-@dag(tags=["Many to one segment partition"])
+@dag(tags=["partitions"])
 def many_to_one_segment_upstream():
 
     @task(outlets=[data_ready])
@@ -46,7 +44,7 @@ many_to_one_segment_upstream()
             window=SegmentWindow(["Legal", "Sales"]),
         ),
     ),
-    tags=["Many to one segment partition"],
+    tags=["partitions"],
 )
 def many_to_one_segment_downstream():
 

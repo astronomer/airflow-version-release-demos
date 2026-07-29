@@ -3,11 +3,11 @@ airflow_settings.yaml
 __pycache__/
 .DS_Store
 .venv
-
-# compiled Go SDK bundle (rebuild: cd include/go_bundle && go tool airflow-go-pack --goos linux --goarch arm64 --output ./bin/go_task_syntax_example .)
 include/go_bundle/bin/
-
-# compiled Java SDK bundle (rebuild: docker run --rm -v "$PWD/include/java_sdk":/home/gradle/project -v airflow_java_sdk_gradle_cache:/home/gradle/.gradle -w /home/gradle/project gradle:8.14-jdk21 gradle --no-daemon bundle && cp include/java_sdk/build/bundle/*.jar include/java_bundle/)
 include/java_bundle/
 include/java_sdk/build/
 include/java_sdk/.gradle/
+dev
+.astro/config.local.lock
+.astro/config.local.yaml 
+.astro/config.lock
