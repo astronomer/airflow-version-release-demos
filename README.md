@@ -5,6 +5,7 @@ Each branch contains the demo for a different Airflow minor version.
 
 ## Airflow 3.x
 
+- Demo: [3.3](https://github.com/astronomer/airflow-version-release-demos/tree/v3.3) - [What’s New in Apache Airflow® 3.3](https://www.astronomer.io/events/webinars/whats-new-airflow-3-3-video?utm_source=github)
 - Demo: [3.2](https://github.com/astronomer/airflow-version-release-demos/tree/v3.2) - Webinar: [Introducing Apache Airflow® 3.2](https://www.astronomer.io/events/webinars/introducing-airflow-3-2-video?utm_source=github)
 - Demo: [3.1](https://github.com/astronomer/airflow-version-release-demos/tree/v3.1) - Webinar: [What's new in Apache Airflow® 3.1](https://www.astronomer.io/events/webinars/airflow-3-1-release-video?utm_source=github)
 - Demo: [3.0](https://github.com/astronomer/airflow-version-release-demos/tree/v3.0) - Webinar: [Introducing Apache Airflow® 3.0](https://www.astronomer.io/events/webinars/introducing-apache-airflow-3-0-video?utm_source=github)
