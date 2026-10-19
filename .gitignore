@@ -1,2 +1,9 @@
 .env
 airflow_settings.yaml
+.venv-beta/
+.airflow-beta/
+.claude
+dev
+.astro/*
+!.astro/test_dag_integrity_default.py
+.venv
