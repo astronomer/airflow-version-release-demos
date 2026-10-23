@@ -1,0 +1,11 @@
+pluginManagement {
+    repositories {
+        mavenLocal {
+            content { includeGroupByRegex("org\\.apache\\.airflow.*") }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = "java-etl"

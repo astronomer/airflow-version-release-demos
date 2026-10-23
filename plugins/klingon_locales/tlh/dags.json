@@ -1,0 +1,79 @@
+{
+  "assetSchedule": "{{count, number}}/{{total, number}} Dochmey chu'qa'lu'",
+  "dagActions": {
+    "delete": {
+      "button": "$t(common:dag_one) yIQaw'"
+    }
+  },
+  "favoriteDag": "$t(common:dag_one) yImaS",
+  "filters": {
+    "allRunTypes": "Hoch ghoS Seghmey",
+    "allStates": "Hoch Dotlhmey",
+    "favorite": {
+      "all": "Hoch",
+      "favorite": "maS",
+      "unfavorite": "maSbe'"
+    },
+    "favoriteState": "maS Dotlh",
+    "favoriteStatePlaceholder": "maS Dotlh yIwIv…",
+    "paused": {
+      "active": "yevbe'",
+      "all": "Hoch",
+      "paused": "yevpu'"
+    },
+    "pausedPlaceholder": "yev Dotlh yIwIv…",
+    "pausedState": "yev Dotlh",
+    "requiresHitlAction": "nuv vang poQ",
+    "runIdPatternFilter": "mIw ghoSmey yInej",
+    "runState": "ghoS Dotlh",
+    "runStatePlaceholder": "ghoS Dotlh yIwIv…",
+    "timetableType": "poH nab Segh"
+  },
+  "folders": {
+    "all": "Hoch mIwmey",
+    "empty": "buqmey tu'lu'be'",
+    "hide": "buqmey yISo'",
+    "show": "buqmey yI'ang",
+    "title": "buqmey"
+  },
+  "recentTaskStateCounts": {
+    "label": "Qu'mey chu'",
+    "loading": "yIloS…",
+    "tooltip": "{{state}}: {{formattedCount}} — Qu'mey yIwIv"
+  },
+  "runStateCounts": {
+    "label": "ghoS Dotlhmey",
+    "loading": "yIloS…",
+    "tooltip": "{{state}}: {{formattedCount}} — ghoSmey yIwIv"
+  },
+  "schedulingActions": {
+    "pauseSelected": "yev / chImmoH"
+  },
+  "search": {
+    "advanced": "nejqu'",
+    "clear": "nej yIteq",
+    "dagRuns": "$t(common:dagRun_other) yInej",
+    "dags": "$t(common:dag_other) yInej",
+    "tasks": "$t(common:task_other) yInej"
+  },
+  "sort": {
+    "displayName": {
+      "asc": "pong (a-')",
+      "desc": "pong ('-a)"
+    },
+    "lastRunAfter": {
+      "asc": "Qav ghoS (ngo'-chu')",
+      "desc": "Qav ghoS (chu'-ngo')"
+    },
+    "lastRunState": {
+      "asc": "Qav ghoS Dotlh (a-')",
+      "desc": "Qav ghoS Dotlh ('-a)"
+    },
+    "nextDagRun": {
+      "asc": "veb mIw ghoS (ngo'-chu')",
+      "desc": "veb mIw ghoS (chu'-ngo')"
+    },
+    "placeholder": "yIwIv"
+  },
+  "unfavoriteDag": "$t(common:dag_one) yImaSQo'"
+}

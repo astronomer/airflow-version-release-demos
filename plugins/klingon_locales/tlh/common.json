@@ -1,0 +1,116 @@
+{
+  "admin": {
+    "Config": "SeH",
+    "Connections": "rarmey",
+    "Plugins": "chelwI'mey",
+    "Pools": "ghommey",
+    "Providers": "nobwI'mey",
+    "Variables": "choHwI'mey"
+  },
+  "appearance": {
+    "appearance": "jIH",
+    "darkMode": "Hurgh",
+    "lightMode": "wov",
+    "systemMode": "De'wI' yItlha'"
+  },
+  "assetEvent_one": "Doch wanI'",
+  "assetEvent_other": "Doch wanI'mey",
+  "asset_one": "Doch",
+  "asset_other": "Dochmey",
+  "browse": {
+    "auditLog": "QonoS",
+    "dagBundles": "mIw veymey",
+    "deadlines": "poH veHmey",
+    "jobs": "vummey",
+    "requiredActions": "Qu'mey poQlu'bogh"
+  },
+  "dagDetails": {
+    "latestRun": "Qav ghoS",
+    "nextRun": "veb ghoS",
+    "owner": "ghajwI'",
+    "schedule": "poH nab",
+    "tags": "permey",
+    "team": "beq"
+  },
+  "dagId": "mIw ngu'wI'",
+  "dagRun_one": "mIw ghoS",
+  "dagRun_other": "mIw ghoSmey",
+  "dag_one": "mIw",
+  "dag_other": "mIwmey",
+  "duration": "poH",
+  "endDate": "rIn jaj",
+  "filters": {
+    "addFilter": "wIv yIchel"
+  },
+  "loading": "yIloS…",
+  "logout": "mej",
+  "nav": {
+    "admin": "che'wI'",
+    "assets": "Dochmey",
+    "browse": "nej",
+    "dags": "mIwmey",
+    "dashboard": "SeHlaw",
+    "docs": "paqmey",
+    "home": "juH",
+    "legacyFabViews": "ngo' jIHmey",
+    "plugins": "chelwI'mey",
+    "security": "Hung"
+  },
+  "noItemsFound": "{{modelName}} tu'lu'be'",
+  "pause": "yev",
+  "presetFilters": {
+    "title": "wIvmey nablu'pu'"
+  },
+  "runTypes": {
+    "asset_materialization": "Doch chenmoH",
+    "asset_triggered": "Doch chu'",
+    "backfill": "ret ghoS",
+    "manual": "ghop",
+    "scheduled": "nablu'pu'"
+  },
+  "selectLanguage": "Hol yIwIv",
+  "startDate": "tagh jaj",
+  "state": "Dotlh",
+  "states": {
+    "awaiting_input": "De' loS",
+    "deferred": "mIm",
+    "failed": "luj",
+    "no_status": "Dotlh pagh",
+    "none": "Dotlh pagh",
+    "open": "poS",
+    "pending": "loS",
+    "planned": "nablu'pu'",
+    "queued": "loS",
+    "removed": "teqlu'pu'",
+    "restarting": "taghqa'",
+    "running": "ghoStaH",
+    "scheduled": "nablu'pu'",
+    "skipped": "Suplu'",
+    "success": "Qapla'",
+    "up_for_reschedule": "nabqa'",
+    "up_for_retry": "nIDqa'",
+    "upstream_failed": "nung luj"
+  },
+  "table": {
+    "noResultsFound": "vay' tu'lu'be'",
+    "ownerPlaceholder": "ghajwI' yIwIv",
+    "tagPlaceholder": "per yIwIv"
+  },
+  "taskInstance_one": "Qu' ghoS",
+  "taskInstance_other": "Qu' ghoSmey",
+  "task_one": "Qu'",
+  "task_other": "Qu'mey",
+  "timeRange": {
+    "anyTime": "Hoch poH",
+    "last7Days": "Qav 7 jaj",
+    "last12Hours": "Qav 12 rep",
+    "last24Hours": "Qav 24 rep",
+    "last30Days": "Qav 30 jaj",
+    "lastHour": "Qav rep",
+    "latestRun": "Qav ghoS",
+    "pastWeek": "Qav Hogh"
+  },
+  "triggered": "chu'lu'pu'",
+  "unpause": "yevHa'",
+  "user": "lo'wI'"
+}

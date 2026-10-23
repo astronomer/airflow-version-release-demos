@@ -1,0 +1,22 @@
+$schema: https://airflow.apache.org/schemas/dag/2026-10-30.json
+dag_id: yaml_etl_typescript
+tags: [multilang]
+
+templates:
+  typescript:
+    queue: typescript
+
+tasks:
+  - id: extract
+    extends: [typescript]
+    run: {}
+
+  - id: transform
+    extends: [typescript]
+    run:
+      data: {$x: extract}
+
+  - id: load
+    extends: [typescript]
+    run:
+      total: {$x: transform}

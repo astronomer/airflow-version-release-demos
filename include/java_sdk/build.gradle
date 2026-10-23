@@ -1,0 +1,25 @@
+plugins {
+    id("org.apache.airflow.sdk") version "${airflowJavaSdkVersion}"
+}
+
+repositories {
+    mavenLocal {
+        content { includeGroup("org.apache.airflow") }
+    }
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor("org.apache.airflow:airflow-sdk-processor:${airflowJavaSdkVersion}")
+    implementation("org.apache.airflow:airflow-sdk:${airflowJavaSdkVersion}")
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
+airflowBundle {
+    mainClass = "com.astronomer.demo.JavaEtl"
+}

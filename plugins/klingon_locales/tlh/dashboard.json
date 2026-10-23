@@ -1,0 +1,76 @@
+{
+  "alerts": {
+    "seeLessContext": "puS yI'ang",
+    "seeMoreContext": "latlh yI'ang",
+    "showMoreAlerts_one": "+{{count, number}} ghuHmoH latlh",
+    "showMoreAlerts_other": "+{{count, number}} ghuHmoHmey latlh"
+  },
+  "deadlines": {
+    "pending": {
+      "empty": "poH veHmey ghoSbogh tu'lu'be'",
+      "title": "ghoSbogh"
+    },
+    "recentlyMissed": {
+      "empty": "poH veHmey Dachbogh tu'lu'be'",
+      "title": "poH veHmey Dachbogh"
+    },
+    "showMore": "latlh yI'ang",
+    "title": "poH veHmey"
+  },
+  "favorite": {
+    "favoriteDags_one": "wa'DIch {{count, number}} maSbogh mIw",
+    "favoriteDags_other": "wa'DIch {{count, number}} maSbogh mIwmey",
+    "noDagRuns": "mIwvam ghoS tu'lu'be' wej.",
+    "noFavoriteDags": "maSbogh mIwmey tu'lu'be' wej. tetlhDaq mIw retlh Hov yIqIp!"
+  },
+  "group": "ghom",
+  "health": {
+    "dagProcessor": "mIw yajwI'",
+    "degraded": "QIHpu'",
+    "degradedHint": {
+      "dagProcessor": "mIw yajwI' luHutlh 'op veymey.",
+      "triggerer": "chu'wI' luHutlh 'op beqmey."
+    },
+    "down": "Heghpu'",
+    "health": "pIv",
+    "healthy": "pIv",
+    "instances": {
+      "bundles": "veymey",
+      "hostname": "De'wI'",
+      "team": "beq",
+      "unknownHostname": "De'wI' Sovbe'lu'"
+    },
+    "lastHeartbeat": "Qav tIq",
+    "metaDatabase": "De' ngaSwI'",
+    "scheduler": "nabwI'",
+    "status": "Dotlh",
+    "triggerer": "chu'wI'",
+    "unhealthy": "pIvbe'",
+    "unknownStatus": "Sovbe'lu'"
+  },
+  "history": "qun",
+  "importErrors": {
+    "dagImportError_one": "mIw Qagh",
+    "dagImportError_other": "mIw Qaghmey",
+    "searchByFile": "ghItlh yInej",
+    "timestamp": "poH"
+  },
+  "managePools": "ghommey yIche'",
+  "noAssetEvents": "Doch wanI'mey tu'lu'be'.",
+  "poolSlots": "ghom Daqmey",
+  "sortBy": {
+    "newestFirst": "chu'qu' wa'DIch",
+    "oldestFirst": "ngo'qu' wa'DIch",
+    "placeholder": "yIwIv"
+  },
+  "source": "Hal",
+  "stats": {
+    "activeDags": "mIwmey yIn",
+    "failedDags": "lujpu'bogh mIwmey",
+    "queuedDags": "loSbogh mIwmey",
+    "requiredActions": "Qu'mey poQlu'bogh",
+    "runningDags": "ghoStaHbogh mIwmey",
+    "stats": "mI'mey"
+  },
+  "welcome": "nuqneH"
+}

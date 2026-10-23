@@ -2,3 +2,6 @@
 apache-airflow-providers-common-ai[openai]==1.0.0rc3
 pydantic-ai-slim[openai]==2.55.0
 openai==3.29.0
+certifi==2026.10.19
+apache-airflow-providers-git==1.0.1
+GitPython==3.2.1

@@ -1,0 +1,16 @@
+{
+  "name": "typescript-etl",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "apache-airflow-ts-sdk": "link:../ts-sdk"
+  },
+  "devDependencies": {
+    "@types/node": "26.2.0",
+    "esbuild": "0.28.2",
+    "typescript": "6.0.3"
+  }
+}

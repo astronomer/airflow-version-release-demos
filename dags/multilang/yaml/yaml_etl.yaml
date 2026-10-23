@@ -1,0 +1,34 @@
+$schema: https://airflow.apache.org/schemas/dag/2026-10-30.json
+dag_id: yaml_etl
+tags: [multilang]
+
+templates:
+  shell:
+    uses: airflow.providers.standard.operators.bash.BashOperator
+    retries: 2
+    with:
+      append_env: true
+
+tasks:
+  - id: extract
+    extends: [shell]
+    with:
+      bash_command: >-
+        echo '{"orders": [{"id": 1, "amount": 20}, {"id": 2, "amount": 35}, {"id": 3, "amount": 45}]}'
+
+  - id: transform
+    extends: [shell]
+    retries: 0
+    with:
+      env:
+        ORDERS: {$x: extract}
+      bash_command: >-
+        echo "$ORDERS" | python3 -c "import json, sys; print(sum(o['amount'] for o in json.load(sys.stdin)['orders']))"
+
+  - id: load
+    extends: [shell]
+    with:
+      env:
+        TOTAL: {$x: transform}
+      bash_command: >-
+        echo "Total order amount: $TOTAL"
