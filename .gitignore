@@ -4,7 +4,6 @@ airflow_settings.yaml
 .airflow-beta/
 .claude
 dev
-.astro/*
 !.astro/test_dag_integrity_default.py
 .venv
 dags/multilang/go/go_etl
@@ -13,3 +12,4 @@ node_modules/
 dags/multilang/java/*.jar
 __pycache__/
 *.pyc
+.astro/config.local*
