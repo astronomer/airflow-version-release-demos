@@ -74,7 +74,7 @@ def get_regions():
 
 
 def train_and_score_model(loop):
-    return round(0.7 + 0.1 * loop.index, 2)
+    return round(0.7 + 0.1 * (loop.index - 1), 2)
 
 
 def model_good_enough(*, loop):

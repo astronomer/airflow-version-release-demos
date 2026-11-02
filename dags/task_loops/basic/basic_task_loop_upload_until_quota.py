@@ -23,7 +23,7 @@ def basic_task_loop_upload_until_quota():
     def my_task_group(my_storage):
         @task
         def my_task_1(my_storage, *, loop):
-            return my_storage if loop.index == 0 else loop.previous
+            return my_storage if loop.index == 1 else loop.previous
 
         @task
         def my_task_2(my_storage):

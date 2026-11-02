@@ -18,7 +18,7 @@ def task_loop_experiments_loop_inside_group():
         def my_task_group(my_number):
             @task
             def my_count_task(my_number, *, loop):
-                return (my_number if loop.index == 0 else loop.previous) + 1
+                return (my_number if loop.index == 1 else loop.previous) + 1
 
             my_count_task(my_number)
 

@@ -37,21 +37,22 @@ def hierarchy_walk():
     def walk_level(start):
         @task
         def populate(start, *, loop):
-            previous = start if loop.index == 0 else loop.previous
-            name = LEVEL_NAMES[loop.index]
+            level = loop.index - 1
+            previous = start if loop.index == 1 else loop.previous
+            name = LEVEL_NAMES[level]
             path = previous["path"] + [name]
             node = {
-                "level": loop.index,
+                "level": level,
                 "name": name,
-                "risk_score": round(0.1 * (loop.index + 1), 3),
+                "risk_score": round(0.1 * loop.index, 3),
             }
-            print(f"Populating level {loop.index} ({name}), path: {' > '.join(path)}")
+            print(f"Populating level {level} ({name}), path: {' > '.join(path)}")
             return {"depth": previous["depth"], "path": path, "node": node}
 
         @task
         def decide(populated, *, loop):
-            has_more = loop.index + 1 < populated["depth"]
-            print(f"Level {loop.index}: has_more={has_more}")
+            has_more = loop.index < populated["depth"]
+            print(f"Level {loop.index - 1}: has_more={has_more}")
             return {**populated, "has_more": has_more}
 
         decide(populate(start))

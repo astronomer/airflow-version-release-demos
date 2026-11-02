@@ -47,7 +47,7 @@ def agent_text_to_sql():
     def answer_question(question):
         @task
         def gather_feedback(question, *, loop):
-            problems = [] if loop.index == 0 else loop.previous["problems"]
+            problems = [] if loop.index == 1 else loop.previous["problems"]
             return {"question": question, "problems": problems}
 
         @task.agent(

@@ -18,7 +18,7 @@ def task_loop_experiments_mapped_terminal_task():
         @task
         def my_count_task(my_number, my_step, *, loop):
             print(f"my_count_task: index={loop.index} previous={loop.previous} result={loop.result}")
-            return (my_number if loop.index == 0 else min(loop.previous)) + my_step
+            return (my_number if loop.index == 1 else min(loop.previous)) + my_step
 
         my_count_task.partial(my_number=my_number).expand(my_step=[1, 2, 3])
 

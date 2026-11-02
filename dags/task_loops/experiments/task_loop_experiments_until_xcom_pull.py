@@ -18,7 +18,7 @@ def task_loop_experiments_until_xcom_pull():
     def my_task_group():
         @task
         def my_count_task(*, loop):
-            return (0 if loop.index == 0 else loop.previous) + 1
+            return (0 if loop.index == 1 else loop.previous) + 1
 
         my_count_task()
 

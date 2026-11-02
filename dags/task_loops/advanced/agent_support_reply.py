@@ -42,7 +42,7 @@ def agent_support_reply():
     def draft_support_reply(ticket):
         @task
         def gather_feedback(ticket, *, loop):
-            if loop.index == 0:
+            if loop.index == 1:
                 return {"ticket": ticket, "feedback": "", "previous_response": ""}
             return {
                 "ticket": ticket,

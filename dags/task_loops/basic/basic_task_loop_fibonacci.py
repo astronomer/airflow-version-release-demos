@@ -16,7 +16,7 @@ def basic_task_loop_fibonacci():
     def my_task_group(my_pair):
         @task
         def my_task_1(my_pair, *, loop):
-            return my_pair if loop.index == 0 else loop.previous
+            return my_pair if loop.index == 1 else loop.previous
 
         @task
         def my_task_2(my_pair):

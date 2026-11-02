@@ -21,7 +21,7 @@ def basic_task_loop_doubling():
     def my_task_group(my_number):
         @task
         def my_task_1(my_number, *, loop):
-            return my_number if loop.index == 0 else loop.previous["doubled_number"]
+            return my_number if loop.index == 1 else loop.previous["doubled_number"]
 
         @task
         def my_task_2(my_number):

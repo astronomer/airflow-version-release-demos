@@ -24,7 +24,7 @@ def task_loop_experiments_mapped_group_inside_loop():
 
         @task
         def my_count_task(my_number, *, loop):
-            return (my_number if loop.index == 0 else loop.previous) + 1
+            return (my_number if loop.index == 1 else loop.previous) + 1
 
         chain(
             my_mapped_task_group.expand(my_letter=["A", "B", "C"]),

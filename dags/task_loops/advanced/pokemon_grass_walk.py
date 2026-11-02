@@ -7,7 +7,7 @@ MAX_STEPS = 10
 ROUTE_POKEMON = ["Caterpie", "Weedle", "Metapod", "Kakuna", "Pidgey"]
 
 
-def pikachu_found(*, loop):
+def stop_if_pikachu(*, loop):
     """Stop the walk the moment we meet Pikachu."""
     return loop.result["found"]
 
@@ -27,14 +27,14 @@ def pokemon_grass_walk():
     def search_grass(trip):
         @task
         def rustle_grass(trip, *, loop, params):
-            previous = trip if loop.index == 0 else loop.previous
+            previous = trip if loop.index == 1 else loop.previous
             wild = (
                 "Pikachu"
                 if random.random() < params["pikachu_luck"]
                 else random.choice(ROUTE_POKEMON)
             )
             print(
-                f"Step {loop.index + 1}: the grass rustles... a wild {wild} appeared!"
+                f"Step {loop.index}: the grass rustles... a wild {wild} appeared!"
             )
             return {"seen": previous["seen"] + [wild], "wild": wild}
 
@@ -61,7 +61,7 @@ def pokemon_grass_walk():
     _enter_forest = enter_forest()
 
     _search_grass = search_grass.partial(trip=_enter_forest).loop(
-        max_iterations=MAX_STEPS, until=pikachu_found
+        max_iterations=MAX_STEPS, until=stop_if_pikachu
     )
 
     _head_home = head_home(_search_grass["check_if_pikachu"].output)

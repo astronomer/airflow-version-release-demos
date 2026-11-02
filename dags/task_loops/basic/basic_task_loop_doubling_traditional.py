@@ -16,7 +16,7 @@ def get_start_number():
 
 
 def get_current_number(my_number, loop):
-    return my_number if loop.index == 0 else loop.previous["doubled_number"]
+    return my_number if loop.index == 1 else loop.previous["doubled_number"]
 
 
 def double_number(my_number):

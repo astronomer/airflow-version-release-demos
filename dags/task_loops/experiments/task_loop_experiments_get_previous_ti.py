@@ -19,7 +19,7 @@ def task_loop_experiments_get_previous_ti():
                     f"index={loop.index} own_region_index={ti.region_index} previous_ti run_id={previous_ti.run_id} "
                     f"region_index={previous_ti.region_index} state={previous_ti.state}"
                 )
-            return (0 if loop.index == 0 else loop.previous) + 1
+            return (0 if loop.index == 1 else loop.previous) + 1
 
         my_count_task()
 

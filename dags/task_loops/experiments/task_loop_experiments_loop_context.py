@@ -29,7 +29,7 @@ def task_loop_experiments_loop_context():
         @task
         def my_count_task(my_number, *, loop):
             print_loop("my_count_task", loop)
-            return (my_number if loop.index == 0 else loop.previous) + 1
+            return (my_number if loop.index == 1 else loop.previous) + 1
 
         chain(my_first_task(), my_count_task(my_number))
 

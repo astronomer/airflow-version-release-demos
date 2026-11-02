@@ -23,7 +23,7 @@ def basic_task_loop_drain_list():
     def my_task_group(my_account):
         @task
         def my_task_1(my_account, *, loop):
-            return my_account if loop.index == 0 else loop.previous
+            return my_account if loop.index == 1 else loop.previous
 
         @task
         def my_task_2(my_account):

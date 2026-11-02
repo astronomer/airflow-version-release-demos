@@ -5,8 +5,8 @@ from airflow.sdk import dag, task, task_group
 
 def at_least_10(*, loop, ti):
     print(f"until: index={loop.index} try_number={ti.try_number} max_tries={ti.max_tries}")
-    if loop.index == 2 and ti.try_number == 1:
-        raise RuntimeError("Failing the first try of the gate in iteration 2")
+    if loop.index == 3 and ti.try_number == 1:
+        raise RuntimeError("Failing the first try of the gate in iteration 3")
     return loop.result >= 10
 
 
@@ -21,7 +21,7 @@ def task_loop_experiments_gate_retries():
     def my_task_group(my_number):
         @task
         def my_count_task(my_number, *, loop):
-            return (my_number if loop.index == 0 else loop.previous) + 1
+            return (my_number if loop.index == 1 else loop.previous) + 1
 
         my_count_task(my_number)
 
