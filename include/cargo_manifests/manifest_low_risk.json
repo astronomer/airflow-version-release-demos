@@ -1,0 +1,11 @@
+{
+  "manifest_id": "CM-2026-0411-LOW",
+  "origin_station": "Earth Spacedock",
+  "destination_station": "Luna Gateway",
+  "declared_items": [
+    {"item": "freeze-dried rations", "tonnes": 12, "hazard_class": "none"},
+    {"item": "medical supplies", "tonnes": 3, "hazard_class": "none"}
+  ],
+  "pilot_certification": "current",
+  "customs_flags": []
+}

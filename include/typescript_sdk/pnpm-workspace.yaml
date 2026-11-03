@@ -3,3 +3,5 @@ blockExoticSubdeps: true
 strictDepBuilds: true
 allowBuilds:
   esbuild: true
+minimumReleaseAgeExclude:
+  - '@apache-airflow/ts-sdk'

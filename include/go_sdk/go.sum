@@ -1,3 +1,5 @@
+github.com/apache/airflow/go-sdk v1.0.0-beta4 h1:V8iRSNY14qE4hucGyU3OFFroEz61c7UFKaDPSkUiNws=
+github.com/apache/airflow/go-sdk v1.0.0-beta4/go.mod h1:TAt82PZ4p3+rNd2tDuFwc7PTzj/GCxYrKL6lDLFv5Pw=
 github.com/cpuguy83/go-md2man/v2 v2.0.6/go.mod h1:oOW0eioCTA6cOiMLiUPZOpcVxMig6NIQQ7OS05n1F4g=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

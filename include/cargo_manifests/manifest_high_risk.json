@@ -1,0 +1,11 @@
+{
+  "manifest_id": "CM-2026-0411-HIGH",
+  "origin_station": "Unregistered freighter",
+  "destination_station": "Earth Spacedock",
+  "declared_items": [
+    {"item": "live biological samples", "tonnes": 0.5, "hazard_class": "biohazard-3"},
+    {"item": "fusion-grade deuterium", "tonnes": 40, "hazard_class": "radiological"}
+  ],
+  "pilot_certification": "expired",
+  "customs_flags": ["expired_certification", "biohazard_present", "origin_not_registered"]
+}

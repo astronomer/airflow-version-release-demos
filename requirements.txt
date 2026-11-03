@@ -1,7 +1,14 @@
 # Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
 apache-airflow-providers-common-ai[openai]==1.1.0
-pydantic-ai-slim[openai]==2.55.0
-openai==3.29.0
+pydantic-ai-slim[openai]==2.61.0
+openai==3.39.0
 certifi==2026.10.19
 apache-airflow-providers-git==1.0.1
 GitPython==3.2.1
+openai-agents==0.24.0
+strands-agents[openai]==1.63.0
+pydantic-ai-harness[codemode]==0.61.0
+boto3==1.43.119
+botocore==1.43.119
+json_repair==0.64.2
+genai-prices==0.1.13

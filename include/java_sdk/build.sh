@@ -6,7 +6,7 @@ AIRFLOW_REPO="${AIRFLOW_REPO:-$HOME/code/apache/airflow}"
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DAG_DIR="$(cd "$PROJECT_DIR/../../dags/multilang/java" && pwd)"
 
-docker run --rm --platform linux/arm64 \
+docker run --rm \
   -v "$AIRFLOW_REPO":/airflow:ro \
   -v "$PROJECT_DIR":/project:ro \
   -v "$DAG_DIR":/dag \

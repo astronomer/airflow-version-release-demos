@@ -1,0 +1,11 @@
+{
+  "manifest_id": "CM-2026-0411-MED",
+  "origin_station": "Ceres Depot",
+  "destination_station": "Mars Spacedock",
+  "declared_items": [
+    {"item": "refined platinum bars", "tonnes": 8, "hazard_class": "none"},
+    {"item": "unmarked sealed crates", "tonnes": 2, "hazard_class": "unknown"}
+  ],
+  "pilot_certification": "current",
+  "customs_flags": ["incomplete_declaration"]
+}
